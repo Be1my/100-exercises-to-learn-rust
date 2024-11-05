@@ -1,12 +1,24 @@
 // TODO: Implement `IndexMut<&TicketId>` and `IndexMut<TicketId>` for `TicketStore`.
 
-use std::ops::Index;
+use std::ops::{Index, IndexMut};
 use ticket_fields::{TicketDescription, TicketTitle};
 
 #[derive(Clone)]
 pub struct TicketStore {
     tickets: Vec<Ticket>,
     counter: u64,
+}
+
+impl IndexMut<&TicketId> for TicketStore {
+    fn index_mut(&mut self, id: &TicketId) -> &mut Self::Output {
+        self.tickets.iter_mut().find(|t| t.id == *id).unwrap()
+    }
+}
+
+impl IndexMut<TicketId> for TicketStore {
+    fn index_mut(&mut self, id: TicketId) -> &mut Self::Output {
+        self.tickets.iter_mut().find(|t| t.id == id).unwrap()
+    }
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]

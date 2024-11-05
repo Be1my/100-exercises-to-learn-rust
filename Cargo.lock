@@ -205,6 +205,7 @@ dependencies = [
 name = "bounded"
 version = "0.1.0"
 dependencies = [
+ "thiserror",
  "ticket_fields",
 ]
 
@@ -443,6 +444,9 @@ dependencies = [
 [[package]]
 name = "deps"
 version = "0.1.0"
+dependencies = [
+ "anyhow",
+]
 
 [[package]]
 name = "deref"
@@ -2175,6 +2179,7 @@ name = "thiserror_"
 version = "0.1.0"
 dependencies = [
  "common",
+ "thiserror",
 ]
 
 [[package]]
